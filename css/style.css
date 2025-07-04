@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: margin-left .5s; /* サイドメニュー表示時にメインコンテンツを押し出すアニメーション */
+}
+
+/* ヘッダーとナビゲーション */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ハンバーガーメニューアイコン */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+/* ハンバーガーメニューのナビゲーションリンク */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* メインコンテンツ */
+main {
+    padding: 20px;
+    transition: margin-left .5s; /* サイドメニューで押し出すアニメーション */
+}
+
+/* サイドメニュー */
+.sidebar {
+    height: 100%;
+    width: 0; /* 初期状態では非表示 */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden; /* 横方向のコンテンツを隠す */
+    transition: 0.5s; /* 開閉アニメーション */
+    padding-top: 60px; /* 上部にスペース */
+    color: white;
+}
+
+.sidebar.open {
+    width: 250px; /* 開いたときの幅 */
+}
+
+.sidebar-content {
+    padding: 8px 8px 8px 32px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar a {
+    padding: 8px 0;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+/* メディアクエリ（レスポンシブ対応） */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px; /* ヘッダーの高さに合わせて調整 */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #333;
+        text-align: center;
+        
+        /* slideToggle風アニメーションの初期設定 */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    .nav-links.active {
+       /* JavaScriptによってmax-heightが設定される */
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+}
